@@ -6,8 +6,8 @@ import "hardhat/console.sol";
 contract M3ssaging3 {
     
     struct User {
-        string name;
         mapping(string => address) contacts;
+        mapping(string=>bool) contactExists;
         mapping(address=>Message[]) chat;
         mapping(address=>uint256) counterMessages;
     }
@@ -45,8 +45,13 @@ contract M3ssaging3 {
         sender.chat[_receiver][sender.counterMessages[_receiver]++] = message;
         //store in receiver
         receiver.chat[msg.sender][receiver.counterMessages[msg.sender]++] = message;
-        
+
         emit MessageSent(_receiver);
+    }
+
+    function sendMessage (string memory contact, string memory _message) public {
+        require(users[msg.sender].contactExists[contact], "Contact doesnt exist");
+        sendMessage(users[msg.sender].contacts[contact], _message);
     }
 
 }
