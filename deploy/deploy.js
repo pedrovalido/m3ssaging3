@@ -5,7 +5,6 @@ const { verify } = require("../utils/verify")
 module.exports = async function ({ getNamedAccounts, deployments }) {
     const { deploy, log } = deployments
     const { deployer } = await getNamedAccounts()
-
     const m3ssaging3 = await deploy("M3ssaging3", {
         from: deployer,
         args: [],
@@ -13,6 +12,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
         waitConfirmations: network.config.blockConfirmations || 1,
     })
 
+    // Did this to verify automatically but needs checks if its working and for each network
     if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
         await verify(m3ssaging3.address, args)
     }
