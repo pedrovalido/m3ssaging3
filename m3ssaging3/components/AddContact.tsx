@@ -6,7 +6,7 @@ interface contractAddressesInterface {
     [key: string]: string[]
 }
 // This might need updates when we are using deploys in different chains
-export default function LotteryEntrance() {
+export default function AddContact() {
     const addresses: contractAddressesInterface = contractAddresses
     const { chainId: chainIdHex, isWeb3Enabled } = useMoralis()
     const chainId: string = parseInt(chainIdHex!).toString()
