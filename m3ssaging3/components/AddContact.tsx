@@ -11,7 +11,7 @@ export default function LotteryEntrance() {
     const addresses: contractAddressesInterface = contractAddresses
     const { chainId: chainIdHex, isWeb3Enabled } = useMoralis()
     const chainId: string = parseInt(chainIdHex!).toString()
-    const m3ssaging3Address = chainId in addresses ? addresses[chainId][0] : null
+    const m3ssaging3Address = chainId in addresses ? addresses[chainId][1] : null
     const [input1,setInput1]= useState("");
     const [input2,setInput2]= useState("");
     const {
