@@ -11,18 +11,18 @@ export default function SendMessage() {
     const addresses: contractAddressesInterface = contractAddresses
     const { chainId: chainIdHex, isWeb3Enabled } = useMoralis()
     const chainId: string = parseInt(chainIdHex!).toString()
-    const m3ssaging3Address = chainId in addresses ? addresses[chainId][1] : null
+    const m3ssaging3Address = chainId in addresses ? addresses[chainId][0] : null
     const [input1,setInput1]= useState("");
     const [input2,setInput2]= useState("");
     const {
-        runContractFunction: sendMessage
+        runContractFunction: sendMessageToAddress
     } = useWeb3Contract({
         abi: abi,
         contractAddress: m3ssaging3Address!, // specify the networkId
-        functionName: "sendMessage",
-        params: {_receiver: input1, _message: input2 },
+        functionName: "sendMessageToAddress",
+        params: {receiver: input1,message: input2},
     })
-
+    
     useEffect(() => {
         if (isWeb3Enabled) {
         }
@@ -47,7 +47,7 @@ export default function SendMessage() {
                     <button
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto"
                         onClick={async function () {
-                            await sendMessage()
+                            await sendMessageToAddress()
                         }}>Send Message
                     </button>
                 </div>

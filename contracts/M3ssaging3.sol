@@ -33,22 +33,22 @@ contract M3ssaging3 {
         emit NewContact(name, contact);
     }
 
-    function sendMessage(address _receiver, string memory _message) public {
+    function sendMessageToAddress(address receiver, string memory message) public {
         //create message
-        Message memory message = Message(_message, msg.sender, _receiver);
-
+        //Message memory message = Message(_message, msg.sender, _receiver);
+        /*
         User storage sender = users[msg.sender];
         User storage receiver = users[_receiver];
         //store in sender
         sender.chat[_receiver][sender.counterMessages[_receiver]++] = message;
         //store in receiver
         receiver.chat[msg.sender][receiver.counterMessages[msg.sender]++] = message;
-
-        emit MessageSent(_receiver);
+        */
+        emit MessageSent(receiver);
     }
 
     function sendMessage(string memory contact, string memory _message) public {
-        sendMessage(users[msg.sender].contacts[contact], _message);
+        sendMessageToAddress(users[msg.sender].contacts[contact], _message);
     }
 
     function transferMoney(address receiver) public payable {
