@@ -15,11 +15,11 @@ export default function SendMessage() {
     const [input1,setInput1]= useState("");
     const [input2,setInput2]= useState("");
     const {
-        runContractFunction: sendMessageToAddress
+        runContractFunction: sendMessage
     } = useWeb3Contract({
         abi: abi,
         contractAddress: m3ssaging3Address!, // specify the networkId
-        functionName: "sendMessageToAddress",
+        functionName: "sendMessage",
         params: {_receiver: input1, _message: input2 },
     })
 
@@ -47,7 +47,7 @@ export default function SendMessage() {
                     <button
                         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto"
                         onClick={async function () {
-                            await sendMessageToAddress()
+                            await sendMessage()
                         }}>Send Message
                     </button>
                 </div>
