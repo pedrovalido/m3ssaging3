@@ -19,13 +19,7 @@ async function updateAbi() {
 async function updateContractAddresses() {
     const m3ssaging3 = await ethers.getContract("M3ssaging3")
     const contractAddresses = JSON.parse(fs.readFileSync(frontEndContractsFile, "utf8"))
-    if (network.config.chainId.toString() in contractAddresses) {
-        if (!contractAddresses[network.config.chainId.toString()].includes(m3ssaging3.address)) {
-            contractAddresses[network.config.chainId.toString()].push(m3ssaging3.address)
-        }
-    } else {
-        contractAddresses[network.config.chainId.toString()] = [m3ssaging3.address]
-    }
+    contractAddresses[network.config.chainId.toString()] = [m3ssaging3.address]
     fs.writeFileSync(frontEndContractsFile, JSON.stringify(contractAddresses))
 }
 module.exports.tags = ["all", "frontend"]
