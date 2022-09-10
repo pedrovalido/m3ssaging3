@@ -1,4 +1,3 @@
-// have a function to enter the lottery
 import { useWeb3Contract, useMoralis } from "react-moralis"
 import { abi, contractAddresses } from "../constants"
 import { useEffect, useState } from "react"
@@ -7,7 +6,7 @@ interface contractAddressesInterface {
     [key: string]: string[]
 }
 // This might need updates when we are using deploys in different chains
-export default function LotteryEntrance() {
+export default function AddContact() {
     const addresses: contractAddressesInterface = contractAddresses
     const { chainId: chainIdHex, isWeb3Enabled } = useMoralis()
     const chainId: string = parseInt(chainIdHex!).toString()

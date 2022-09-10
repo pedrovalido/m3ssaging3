@@ -1,13 +1,13 @@
-# Sample Hardhat Project
+# How to fix when getting errors based of imports
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
-
-Try running some of the following tasks:
-
+Run this command (backend path: m3ssaging, frontend path: m3ssaging/m3ssaging):
 ```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
+yarn
+```
+
+If still getting errors "module not found" go to https://www.npmjs.com/ and install the package
+
+To run our frontend in localhost run this command in m3ssaging/m3ssaging
+```shell
+yarn run dev
 ```
