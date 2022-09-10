@@ -24,12 +24,12 @@ const networkConfig = {
 }
 
 const developmentChains = ["hardhat", "localhost"]
-const DECIMALS = 8
-const INITIAL_ANSWER = 200000000000
+const frontEndContractsFile = "m3ssaging3/constants/contractAddresses.json"
+const frontEndAbiFile = "m3ssaging3/constants/abi.json"
 
 module.exports = {
     networkConfig,
     developmentChains,
-    DECIMALS,
-    INITIAL_ANSWER,
+    frontEndContractsFile,
+    frontEndAbiFile,
 }
