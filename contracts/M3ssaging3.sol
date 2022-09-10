@@ -33,7 +33,7 @@ contract M3ssaging3 {
         emit NewContact(name, contact);
     }
 
-    function sendMessageToAddress(address _receiver, string memory _message) public {
+    function sendMessage(address _receiver, string memory _message) public {
         //create message
         Message memory message = Message(_message, msg.sender, _receiver);
 
@@ -48,7 +48,7 @@ contract M3ssaging3 {
     }
 
     function sendMessage(string memory contact, string memory _message) public {
-        sendMessageToAddress(users[msg.sender].contacts[contact], _message);
+        sendMessage(users[msg.sender].contacts[contact], _message);
     }
 
     function transferMoney(address receiver) public payable {
