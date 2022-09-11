@@ -1,7 +1,8 @@
 // have a function to enter the lottery
-import { useWeb3Contract, useMoralis } from "react-moralis"
-import { abi, contractAddresses } from "../constants"
+import { ethers } from "ethers"
 import { useEffect, useState } from "react"
+import { abi, contractAddresses } from "../constants"
+import { useWeb3Contract, useMoralis } from "react-moralis"
 
 interface contractAddressesInterface {
     [key: string]: string[]
@@ -15,12 +16,12 @@ export default function SendMessage() {
     const [input1,setInput1]= useState("");
     const [input2,setInput2]= useState("");
     const {
-        runContractFunction: sendMessageToAddress
+        runContractFunction: sendMessageToAddress 
     } = useWeb3Contract({
         abi: abi,
         contractAddress: m3ssaging3Address!, // specify the networkId
         functionName: "sendMessageToAddress",
-        params: {receiver: input1,message: input2},
+        params: {_receiver: input1,_message: input2},
     })
     
     useEffect(() => {
