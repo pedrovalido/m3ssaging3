@@ -2,6 +2,7 @@ import Head from "next/head"
 import styles from "../styles/Home.module.css"
 import Header from "../components/Header"
 import AddContact from "../components/AddContact"
+import SendMessage from "../components/SendMessage"
 
 export default function Home() {
     return (
@@ -13,6 +14,7 @@ export default function Home() {
             </Head>
             <Header />
             <AddContact />
+            <SendMessage />
         </div>
     )
 }
