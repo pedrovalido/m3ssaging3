@@ -1,16 +1,17 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { MoralisProvider } from "react-moralis"
-import { NotificationProvider } from "web3uikit"
+import dynamic from 'next/dynamic'
 
-function MyApp({ Component, pageProps }: AppProps) {
+const AppWithoutSSR = dynamic(() => import('../components/App'), {
+  ssr: false,
+})
+
+function AppWrapper({ Component, pageProps }: AppProps) {
   return (
-    <MoralisProvider initializeOnMount={false}>
-        <NotificationProvider>
-            <Component {...pageProps} />
-        </NotificationProvider>
-    </MoralisProvider>
-)
+    <AppWithoutSSR>
+      <Component {...pageProps} />
+    </AppWithoutSSR>
+  )
 }
 
-export default MyApp
+export default AppWrapper
