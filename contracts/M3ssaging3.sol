@@ -35,7 +35,6 @@ contract M3ssaging3 {
 
     function sendMessageToAddress(address _receiver, string memory _message) public {
         //create message
-
         Message memory message = Message(_message, msg.sender, _receiver);
 
         User storage sender = users[msg.sender];
