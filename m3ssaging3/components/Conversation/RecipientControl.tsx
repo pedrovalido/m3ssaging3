@@ -91,6 +91,7 @@ const RecipientControl = ({
 
   const handleInputChange = useCallback(
     async (e: React.SyntheticEvent) => {
+      console.log("TRIGGERED")
       const data = e.target as typeof e.target & {
         value: string
       }
@@ -110,7 +111,7 @@ const RecipientControl = ({
   )
 
   return (
-    <div className="flex-1 flex-col shrink justify-center flex h-[72px] bg-zinc-50 md:border-b md:border-gray-200 md:px-4 md:pb-[2px]">
+    <div className="flex-1 flex-col shrink justify-center flex h-[80px] bg-zinc-50 md:border-b md:border-gray-200 md:px-4 md:pb-[2px]">
       <form
         className="w-full flex pl-2 md:pl-0 h-8 pt-1"
         action="#"

@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { NavigationView, ConversationView } from './Views'
 import { RecipientControl } from './Conversation'
 import NewMessageButton from './NewMessageButton'
+import NewContactButton from './NewContactButton'
+import TestButton from './TestButton'
 import NavigationPanel from './NavigationPanel'
 import XmtpInfoPanel from './XmtpInfoPanel'
 import UserMenu from './UserMenu'
@@ -14,20 +16,27 @@ import XmtpContext from '../contexts/xmtp'
 
 const NavigationColumnLayout: React.FC = ({ children }) => (
   <aside className="flex w-full md:w-84 flex-col flex-grow fixed inset-y-0">
-    <div className="flex flex-col flex-grow md:border-r md:border-gray-200 bg-white overflow-y-auto">
+    <div className="flex flex-col flex-grow md:border-r md:border-gray-300 bg-white overflow-y-auto">
       {children}
     </div>
   </aside>
 )
 
-const NavigationHeaderLayout: React.FC = ({ children }) => (
-  <div className="h-[10vh] max-h-20 bg-p-600 flex items-center justify-between flex-shrink-0 px-4">
+const NavigationHeaderLayout: React.FC = ({ children }) => {
+  let queryAddress = window.location.pathname
+  let HeaderName: String = queryAddress.includes("contacts") ? "Contacts" : "Messages"
+  const handleBackArrowClick = () => {
+    HeaderName = "Messages"
+  }
+  return (
+  <div className="h-[10vh] max-h-20 bg-gradient-to-r from-cyan-500 to-blue-500 ... flex items-center justify-between flex-shrink-0 px-4" onClick={handleBackArrowClick}>
     <Link href="/" passHref={true}>
-      <img className="h-8 w-auto" src="/xmtp-icon.png" alt="XMTP" />
+      <h1 className="text-white text-2xl">{HeaderName}</h1>
     </Link>
     {children}
   </div>
 )
+}
 
 const TopBarLayout: React.FC = ({ children }) => (
   <div className="sticky top-0 z-10 flex-shrink-0 flex bg-zinc-50 border-b border-gray-200 md:bg-white md:border-0">
@@ -90,7 +99,7 @@ const Layout: React.FC = ({ children }) => {
         />
       </Head>
       <div>
-        <NavigationView>
+      <NavigationView>
           <NavigationColumnLayout>
             <NavigationHeaderLayout>
               {walletAddress && client && <NewMessageButton />}
