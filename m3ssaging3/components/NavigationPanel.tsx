@@ -4,7 +4,9 @@ import { useContext } from 'react'
 import { WalletContext } from '../contexts/wallet'
 import XmtpContext from '../contexts/xmtp'
 import ConversationsList from './ConversationsList'
+import Contacts from './ContactsList'
 import Loader from './Loader'
+import ContactsList from './ContactsList'
 
 type NavigationPanelProps = {
   onConnect: () => Promise<void>
@@ -87,7 +89,14 @@ const ConversationsPanel = (): JSX.Element => {
       />
     )
   }
-
+  let path = window.location.pathname
+  if (path.includes("contacts")){
+    return (
+      <nav className="flex-1 pb-4 space-y-1">
+        <ContactsList />
+      </nav>
+    )
+  }
   return (
     <nav className="flex-1 pb-4 space-y-1">
       <ConversationsList />

@@ -24,7 +24,7 @@ export const formatTime = (d: Date | undefined): string =>
     : ''
 
 export const checkPath = () => {
-  return window.location.pathname !== '/' && window.location.pathname !== '/dm'
+  return window.location.pathname !== '/' && window.location.pathname !== '/dm' && window.location.pathname !== '/contacts' 
 }
 
 export const checkIfPathIsEns = (address: string): boolean => {
