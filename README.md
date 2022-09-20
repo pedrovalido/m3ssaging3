@@ -1,3 +1,5 @@
+# Messaging between wallets
+
 # How to fix when getting errors based of imports
 
 Run this command (backend path: m3ssaging, frontend path: m3ssaging/m3ssaging):
